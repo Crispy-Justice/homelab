@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+    speedtest-tracker:
+        image: ghcr.io/alexjustesen/speedtest-tracker:latest
+        container_name: speedtest-tracker
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=America/Chicago
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - ./appdata/config:/config
+            - ./appdata/web:/etc/ssl/web
+        ports:
+            - 8765:80
+        restart: unless-stopped

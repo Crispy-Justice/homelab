@@ -1,0 +1,31 @@
+version: "3.3"
+
+services:
+
+  ghost:
+    image: ghost:latest
+    restart: always
+    ports:
+      - "2368:2368"
+    depends_on:
+      - db
+    environment:
+      url: http://198.46.215.11:2368
+      database__client: mysql
+      database__connection__host: db
+      database__connection__user: ghost
+      database__connection__password: ghostdbpass
+      database__connection__database: ghostdb
+    volumes:
+      - ./appdata/ghost/content:/var/lib/ghost/content
+
+  db:
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin@coco3842
+      MYSQL_USER: ghost
+      MYSQL_PASSWORD: coco3842
+      MYSQL_DATABASE: ghostdb
+    volumes:
+      - ./appdata/ghost-db/mysql:/var/lib/mysql
