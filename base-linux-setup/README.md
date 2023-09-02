@@ -1,6 +1,7 @@
 # Base linux install
 
 ## Update
+
 ```bash
 sudo apt update && sudo apt upgrade -y
 
@@ -8,6 +9,7 @@ sudo reboot
 ```
 
 ## Install oh-my-zsh
+
 ```bash
 sudo apt update
 sudo apt install zsh powerline fonts-powerline
@@ -17,6 +19,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ```
 
 ## Install docker
+
 ```bash
 curl -sSL https://get.docker.com | sh
 sudo usermod -aG docker $(whoami)
@@ -25,7 +28,8 @@ exit
 ```
 
 ## Setup directories for docker installs
-```
+
+```bash
 /docker
 ├─ stack_1/
 │  ├─ docker-compose.yaml
